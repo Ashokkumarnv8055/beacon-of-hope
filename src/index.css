@@ -2,95 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Blind NGO Trust - Accessible Design System */
+/* All colors in HSL for consistency */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Merriweather:wght@700;900&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Warm, accessible color palette */
+    --background: 40 33% 98%;
+    --foreground: 220 30% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 30% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 30% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Deep navy - trustworthy, professional */
+    --primary: 220 60% 20%;
+    --primary-foreground: 40 33% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Warm amber - hope, warmth */
+    --secondary: 38 92% 50%;
+    --secondary-foreground: 220 30% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 40 20% 92%;
+    --muted-foreground: 220 15% 40%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Teal accent for variety */
+    --accent: 175 60% 35%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 20% 85%;
+    --input: 220 20% 85%;
+    --ring: 38 92% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Custom tokens for nonprofit theme */
+    --hero-gradient: linear-gradient(135deg, hsl(220 60% 20%) 0%, hsl(220 50% 30%) 100%);
+    --warm-gradient: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(30 90% 55%) 100%);
+    --card-shadow: 0 4px 20px -4px hsl(220 30% 15% / 0.1);
+    --card-shadow-hover: 0 8px 30px -4px hsl(220 30% 15% / 0.15);
+    
+    /* Accessibility - focus ring */
+    --focus-ring: 0 0 0 3px hsl(38 92% 50% / 0.5);
+    
+    /* Sidebar tokens */
+    --sidebar-background: 220 60% 20%;
+    --sidebar-foreground: 40 33% 98%;
+    --sidebar-primary: 38 92% 50%;
+    --sidebar-primary-foreground: 220 30% 15%;
+    --sidebar-accent: 220 50% 30%;
+    --sidebar-accent-foreground: 40 33% 98%;
+    --sidebar-border: 220 40% 30%;
+    --sidebar-ring: 38 92% 50%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 220 30% 10%;
+    --foreground: 40 33% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 30% 15%;
+    --card-foreground: 40 33% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 30% 15%;
+    --popover-foreground: 40 33% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 38 92% 50%;
+    --primary-foreground: 220 30% 15%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 50% 30%;
+    --secondary-foreground: 40 33% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 25% 20%;
+    --muted-foreground: 40 20% 70%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 175 60% 45%;
+    --accent-foreground: 220 30% 10%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 220 25% 25%;
+    --input: 220 25% 25%;
+    --ring: 38 92% 50%;
   }
 }
 
@@ -100,6 +100,136 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', Georgia, serif;
+    @apply font-bold tracking-tight;
+  }
+
+  /* Accessibility - focus states */
+  *:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  /* Skip to main content link */
+  .skip-link {
+    @apply absolute left-4 bg-secondary text-secondary-foreground px-4 py-2 rounded-md font-semibold z-50;
+    top: -100px;
+    transition: top 0.2s ease;
+  }
+
+  .skip-link:focus {
+    top: 4px;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    :root {
+      --foreground: 0 0% 0%;
+      --background: 0 0% 100%;
+      --border: 0 0% 0%;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Hero section styles */
+  .hero-section {
+    background: var(--hero-gradient);
+    @apply text-primary-foreground;
+  }
+
+  /* CTA button with warm gradient */
+  .btn-cta {
+    background: var(--warm-gradient);
+    @apply text-secondary-foreground font-semibold px-6 py-3 rounded-lg;
+    @apply hover:opacity-90 transition-opacity;
+    @apply focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary;
+  }
+
+  /* Card with accessible focus */
+  .accessible-card {
+    box-shadow: var(--card-shadow);
+    @apply bg-card rounded-xl p-6 transition-shadow duration-300;
+  }
+
+  .accessible-card:hover {
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+
+  /* Section heading */
+  .section-heading {
+    @apply text-3xl md:text-4xl text-foreground mb-4;
+  }
+
+  /* Section subheading */
+  .section-subheading {
+    @apply text-lg text-muted-foreground max-w-2xl;
+  }
+
+  /* Accessible form input */
+  .form-input-accessible {
+    @apply w-full px-4 py-3 rounded-lg border-2 border-input bg-background;
+    @apply text-foreground text-lg;
+    @apply focus:border-secondary focus:ring-2 focus:ring-secondary/30;
+    @apply transition-colors duration-200;
+  }
+
+  .form-input-accessible::placeholder {
+    @apply text-muted-foreground;
+  }
+
+  /* Gallery image container */
+  .gallery-item {
+    @apply relative overflow-hidden rounded-xl cursor-pointer;
+    @apply focus-within:ring-4 focus-within:ring-secondary;
+  }
+
+  .gallery-item img {
+    @apply w-full h-full object-cover transition-transform duration-300;
+  }
+
+  .gallery-item:hover img {
+    @apply scale-105;
+  }
+}
+
+@layer utilities {
+  /* Visually hidden but accessible to screen readers */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Focus visible utility */
+  .focus-ring {
+    @apply focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2;
   }
 }
