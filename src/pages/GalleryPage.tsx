@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { X } from "lucide-react";
+import { X, Camera, Video, Newspaper } from "lucide-react";
+import { VideoGallery } from "@/components/gallery/VideoGallery";
+import { NewsEvents } from "@/components/gallery/NewsEvents";
 import galleryMusic from "@/assets/gallery-music.jpg";
 import galleryComputer from "@/assets/gallery-computer.jpg";
 import galleryCommunity from "@/assets/gallery-community.jpg";
@@ -80,9 +82,16 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Gallery Grid */}
-      <section className="section-container" aria-labelledby="gallery-section-heading">
-        <h2 id="gallery-section-heading" className="sr-only">Photo Gallery</h2>
+      {/* Photo Gallery */}
+      <section className="section-container" aria-labelledby="photo-gallery-heading">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center">
+            <Camera className="w-6 h-6 text-secondary" aria-hidden="true" />
+          </div>
+          <h2 id="photo-gallery-heading" className="text-3xl font-serif font-bold text-foreground">
+            Photo Gallery
+          </h2>
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleryImages.map((image, index) => (
             <button
@@ -112,6 +121,32 @@ export default function GalleryPage() {
             </button>
           ))}
         </div>
+      </section>
+
+      {/* Video Gallery */}
+      <section className="section-container bg-muted/30" aria-labelledby="video-gallery-heading">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center">
+            <Video className="w-6 h-6 text-accent" aria-hidden="true" />
+          </div>
+          <h2 id="video-gallery-heading" className="text-3xl font-serif font-bold text-foreground">
+            Video Gallery
+          </h2>
+        </div>
+        <VideoGallery />
+      </section>
+
+      {/* News & Events */}
+      <section className="section-container" aria-labelledby="news-events-heading">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center">
+            <Newspaper className="w-6 h-6 text-primary" aria-hidden="true" />
+          </div>
+          <h2 id="news-events-heading" className="text-3xl font-serif font-bold text-foreground">
+            News & Events
+          </h2>
+        </div>
+        <NewsEvents />
       </section>
 
       {/* Lightbox */}

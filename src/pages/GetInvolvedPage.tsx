@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Heart, Users, Check } from "lucide-react";
+import { Heart, Users, Check, Wallet } from "lucide-react";
 import { z } from "zod";
+import { PaymentMethods } from "@/components/donation/PaymentMethods";
 
 // Validation schemas
 const volunteerSchema = z.object({
@@ -477,6 +478,19 @@ export default function GetInvolvedPage() {
             )}
           </section>
         </div>
+
+        {/* Payment Methods Section */}
+        <section className="mt-16" aria-labelledby="payment-methods-heading">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center">
+              <Wallet className="w-6 h-6 text-secondary" aria-hidden="true" />
+            </div>
+            <h2 id="payment-methods-heading" className="text-2xl font-serif font-bold text-foreground">
+              Donation Methods
+            </h2>
+          </div>
+          <PaymentMethods />
+        </section>
       </div>
     </Layout>
   );
