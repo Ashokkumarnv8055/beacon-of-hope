@@ -5,6 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
+import { LocationMap } from "@/components/contact/LocationMap";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name is too long"),
@@ -152,21 +153,8 @@ export default function ContactPage() {
               ))}
             </div>
 
-            {/* Map Placeholder */}
-            <div className="mt-8">
-              <h3 className="font-semibold text-foreground mb-4">Our Location</h3>
-              <div 
-                className="bg-muted rounded-xl h-64 flex items-center justify-center"
-                role="img"
-                aria-label="Map showing Vision Hope Trust location at 123 Hope Street, Mumbai"
-              >
-                <div className="text-center text-muted-foreground">
-                  <MapPin className="w-12 h-12 mx-auto mb-2 text-secondary" aria-hidden="true" />
-                  <p className="font-medium">Map Placeholder</p>
-                  <p className="text-sm">123 Hope Street, Mumbai</p>
-                </div>
-              </div>
-            </div>
+            {/* Interactive Map */}
+            <LocationMap address="123 Hope Street, Charity Lane, Mumbai, Maharashtra 400001, India" />
           </aside>
 
           {/* Contact Form */}
