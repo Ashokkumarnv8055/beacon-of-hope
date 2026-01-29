@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Heart, Users, ArrowRight, GraduationCap, Lightbulb, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
-import heroImage from "@/assets/hero-students.jpg";
+import { HeroCarousel } from "@/components/home/HeroCarousel";
 import galleryMusic from "@/assets/gallery-music.jpg";
 import galleryCommunity from "@/assets/gallery-community.jpg";
 
@@ -34,60 +34,8 @@ const programs = [
 export default function HomePage() {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section 
-        className="hero-section relative min-h-[80vh] flex items-center"
-        aria-labelledby="hero-heading"
-      >
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroImage}
-            alt="Students learning together with braille materials in a bright classroom"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/70" aria-hidden="true" />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="max-w-3xl">
-            <p className="text-secondary font-semibold text-lg mb-4 animate-fade-in">
-              Welcome to Vision Hope Trust
-            </p>
-            <h1 
-              id="hero-heading"
-              className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground mb-6 animate-fade-in"
-              style={{ animationDelay: "0.1s" }}
-            >
-              Empowering Visually Impaired Lives Through Education & Support
-            </h1>
-            <p 
-              className="text-xl text-primary-foreground/90 mb-10 animate-fade-in"
-              style={{ animationDelay: "0.2s" }}
-            >
-              For over 18 years, we've been transforming lives by providing education, 
-              skill training, and community support to visually impaired individuals.
-            </p>
-            <div 
-              className="flex flex-col sm:flex-row gap-4 animate-fade-in"
-              style={{ animationDelay: "0.3s" }}
-            >
-              <Button variant="cta" size="lg" asChild>
-                <Link to="/get-involved#donate">
-                  <Heart className="w-5 h-5" aria-hidden="true" />
-                  Donate Now
-                </Link>
-              </Button>
-              <Button variant="hero-outline" size="lg" asChild>
-                <Link to="/get-involved#volunteer">
-                  <Users className="w-5 h-5" aria-hidden="true" />
-                  Become a Volunteer
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Carousel */}
+      <HeroCarousel />
 
       {/* Stats Section */}
       <section className="bg-muted py-12" aria-label="Our impact in numbers">

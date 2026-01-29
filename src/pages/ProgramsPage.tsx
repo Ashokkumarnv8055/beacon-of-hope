@@ -11,6 +11,7 @@ import {
   Heart,
   ArrowRight 
 } from "lucide-react";
+import { ProgramsMedia } from "@/components/programs/ProgramsMedia";
 
 const programs = [
   {
@@ -145,7 +146,8 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Programs Media - Images, Videos, and News */}
+      <ProgramsMedia />
       <section 
         className="bg-muted py-16 md:py-20"
         aria-labelledby="programs-cta-heading"
