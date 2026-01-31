@@ -151,15 +151,49 @@
   /* Hero section styles */
   .hero-section {
     background: var(--hero-gradient);
-    @apply text-primary-foreground;
+    @apply text-primary-foreground relative overflow-hidden;
+  }
+
+  .hero-section::before {
+    content: '';
+    @apply absolute inset-0 opacity-10;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 
   /* CTA button with warm gradient */
   .btn-cta {
     background: var(--warm-gradient);
     @apply text-secondary-foreground font-semibold px-6 py-3 rounded-lg;
-    @apply hover:opacity-90 transition-opacity;
+    @apply hover:opacity-90 transition-all duration-300;
     @apply focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-secondary;
+    @apply hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  /* Beautiful card with gradient border */
+  .gradient-card {
+    @apply relative bg-card rounded-2xl p-6 overflow-hidden;
+    box-shadow: var(--card-shadow);
+  }
+
+  .gradient-card::before {
+    content: '';
+    @apply absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, hsl(38 92% 50% / 0.2), hsl(175 60% 35% / 0.1));
+  }
+
+  .gradient-card:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Glowing text effect */
+  .text-glow {
+    text-shadow: 0 0 20px hsl(38 92% 50% / 0.5);
+  }
+
+  /* Glass morphism effect */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 rounded-2xl;
+    box-shadow: 0 8px 32px hsl(220 30% 15% / 0.1);
   }
 
   /* Card with accessible focus */
