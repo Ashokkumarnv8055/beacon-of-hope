@@ -16,14 +16,12 @@ export function LocationMap({
   latitude = DEFAULT_LAT, 
   longitude = DEFAULT_LNG 
 }: LocationMapProps) {
-  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
-  const googleMapsDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
   const encodedAddress = encodeURIComponent(address);
-  const embedUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodedAddress}&zoom=15`;
-
-  const handleMapClick = () => {
-    window.open(googleMapsUrl, '_blank', 'noopener,noreferrer');
-  };
+  // Use address-based URLs (more reliable than default coords) and avoid API-key embeds.
+  // Also prefer real links over window.open to reduce popup-blocker issues on mobile.
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+  const googleMapsDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`;
+  const embedUrl = `https://www.google.com/maps?q=${encodedAddress}&z=15&output=embed`;
 
   return (
     <div className="mt-8">
@@ -33,18 +31,12 @@ export function LocationMap({
       </h3>
       
       {/* Interactive Map Container */}
-      <div 
-        className="relative group rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300 cursor-pointer border-2 border-border hover:border-secondary"
-        onClick={handleMapClick}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            handleMapClick();
-          }
-        }}
-        role="button"
-        tabIndex={0}
-        aria-label={`View location on Google Maps: ${address}`}
+      <a
+        href={googleMapsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative group block rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300 cursor-pointer border-2 border-border hover:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+        aria-label={`Open location in Google Maps: ${address}`}
       >
         {/* Map iframe - visual only */}
         <div className="h-64 w-full bg-muted">
@@ -73,7 +65,7 @@ export function LocationMap({
         <div className="absolute top-3 right-3 bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm font-medium shadow-lg">
           Click to open
         </div>
-      </div>
+      </a>
       
       {/* Address and Buttons */}
       <div className="mt-4 p-4 bg-muted/50 rounded-xl border border-border">
@@ -90,7 +82,7 @@ export function LocationMap({
             className="flex-1"
             onClick={(e) => {
               e.stopPropagation();
-              window.open(googleMapsUrl, '_blank', 'noopener,noreferrer');
+              window.open(googleMapsUrl, "_blank", "noopener,noreferrer");
             }}
           >
             <MapPin className="w-4 h-4" aria-hidden="true" />
@@ -102,7 +94,7 @@ export function LocationMap({
             className="flex-1"
             onClick={(e) => {
               e.stopPropagation();
-              window.open(googleMapsDirectionsUrl, '_blank', 'noopener,noreferrer');
+              window.open(googleMapsDirectionsUrl, "_blank", "noopener,noreferrer");
             }}
           >
             <Navigation className="w-4 h-4" aria-hidden="true" />
